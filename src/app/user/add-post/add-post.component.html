@@ -1,0 +1,41 @@
+<div class="add-post-page">
+  <h2>Create post</h2>
+  <div style="text-align: right">
+
+    <button style="margin-left: 1rem;" mat-flat-button color="primary" routerLink="/profile">My Posts</button>
+  </div>
+  <form [formGroup]="addPostForm">
+    <div>
+      <img width="400px" class="profile-image" [src]="previewImgURL || formatImage(selectedImageToPost) || 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png'" alt="profile image">
+      <div class="col">
+        <input type="file" style="display: none;" #fileInput (change)="onFileSelected($any($event))">
+
+        <button mat-button (click)="fileInput.click()">Pick File</button>
+        <!--        <button mat-button *ngIf="selectedImageToPost" (click)="onUpload()">Upload</button>-->
+      </div>
+
+      <div></div>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location">
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Caption</mat-label>
+        <input matInput formControlName="caption">
+      </mat-form-field>
+
+      <div id="controls" class="row">
+        <button style="width: 25%" [disabled]="addPostForm.invalid" (click)="submit()" mat-flat-button color="primary">Add post
+        </button>
+      </div>
+    </div>
+  </form>
+
+
+</div>
